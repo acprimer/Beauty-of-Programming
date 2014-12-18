@@ -7,23 +7,33 @@ public class chap02_01_NumberOfOnes {
     /**
      * 计算一个二进制数中1的个数
      * Time: O(log2(num))
-     * @param num 一个字节的无符号整数 [0...255];
+     * @param x 一个字节的无符号整数 [0...255];
      * @return
      */
-    public int count_1(int num) {
+    public int count_1(int x) {
         int ans = 0;
-        while (num != 0) {
-            ans += (num & 0x01);
-            num >>= 1;
+        while (x != 0) {
+            ans += (x % 2);
+            x /= 2;
+        }
+        return ans;
+    }
+
+    // Time: O(log2(num))
+    public int count_2(int x) {
+        int ans = 0;
+        while (x != 0) {
+            ans += (x & 0x01);
+            x >>= 1;
         }
         return ans;
     }
 
     // Time: O(M) M是num的二进制中1的个数
-    public int count_2(int num) {
+    public int count_3(int x) {
         int ans = 0;
-        while (num != 0) {
-            num &= (num - 1);
+        while (x != 0) {
+            x &= (x - 1);
             ans++;
         }
         return ans;

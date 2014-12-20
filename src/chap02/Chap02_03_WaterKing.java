@@ -36,6 +36,13 @@ public class Chap02_03_WaterKing {
         return stack.peek();
     }
 
+    public int find4thMost(int[] ids) {
+        int[] candidates = new int[3];
+        int[] count = new int[3];
+        for(int i=0;i<ids.length;i++) {
+        }
+    }
+
     public static void main(String[] args) {
         int ans = new Chap02_03_WaterKing().findMost(new int[]{1, 2, 3, 4});
         System.out.println(ans);

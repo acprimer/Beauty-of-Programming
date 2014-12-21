@@ -187,12 +187,12 @@ int findMostWithStack(int[] ids) {
     for(int i=0;i<ids.length;i++) {
         if(stack.isEmpty()) {
             stack.push(ids[i]);
-		} else {
-        if(stack.peek()==ids[i]) stack.push(ids[i]);
-        else stack.pop();
+        } else {
+            if(stack.peek()==ids[i]) stack.push(ids[i]);
+            else stack.pop();
+        }
     }
-}
-return stack.peek();
+    return stack.peek();
 }
 \end{Code}
 
@@ -201,7 +201,7 @@ return stack.peek();
 
 \begin{Code}
 // 时间复杂度O(N)，空间复杂度O(1)
-public int findMost(int[] ids) {
+int findMost(int[] ids) {
     int candidate = -1, count = 0;
     for (int i = 0; i < ids.length; i++) {
         if (count == 0) {
@@ -231,4 +231,131 @@ public int findMost(int[] ids) {
 有3个元素出现的次数超过了数组长度的$\frac{1}{4}$，找出这3个元素。
 
 \subsubsection{解法}
-先排序再查找是可以找出的，时间复杂度是$O(Nlg(N))$，这里就不给出具体代码了。
+先排序再查找是可以找出的，时间复杂度是$O(Nlg(N))$，这里就不给出具体代码了。我们同样也可以采用PK的方式来决出次数最多的3个数字，这样就需要保存3个候选元素和它们对应的次数，在遇到新的元素时，先跟这个3个候选元素比较，
+如果次数为0就把当前元素作为候选元素，如果当前元素与候选元素相等那么把它的次数加1，如果当前元素与3个候选元素都不相等就把3个候选元素的次数都减去1，最后得到的3个候选元素就是答案了。
+
+我们还可以将问题抽象成一个通用的情况：有k-1个元素出现了超过$\frac{1}{k}$次，求出这k-1个元素。
+\begin{Code}
+// 时间复杂度O(N)，空间复杂度O(1)
+int[] majorityNumber(ArrayList<Integer> nums, int k) {
+    int[] candidates = new int[k];
+    int[] count = new int[k];
+    for (int i = 0; i < nums.size(); i++) {
+        int cur = nums.get(i), j;
+        for (j = 0; j < k; j++) {
+            if (count[j] == 0) {
+                candidates[j] = cur;
+                count[j]++;
+                break;
+            } else if (candidates[j] == cur) {
+                count[j]++;
+                break;
+            }
+        }
+        if (j >= k) {
+            for(int idx=0;idx<k;idx++) {
+                count[idx]--;
+            }
+        }
+    }
+    return candidates;
+}
+\end{Code}
+
+
+\section{1的数目} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:number-of-ones-in-sequence}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{问题}
+从1到N，顺序写下这N个数字，比如1,2,3,4,...，数一下这其中出现了多少次数字"1"。
+
+1. 定义函数$f(N)$返回1到N之间出现的1的个数，比如$f(12)=5$。
+
+2.满足条件$f(N) = N$ 的最大的N是多少？
+
+\subsubsection{问题1解法}
+如果从1到N遍历每一个数字并且求出每个数字中包含了几个1，这种做法的时间复杂度是$O(N*log_{10}(N))$。
+
+我们可以这样考虑，我们首先观察个位数字是循环出现的，循环节是10，每10个数字出现一个1.
+\[\underbrace {0, \underline{1}, 2 \cdots , 8, 9}_{10}\]
+再来观察一下十位数，这次每100个数字就会出现10个1.
+\[\underbrace {0, 1, 2 \cdots , 8, 9, \underline{1}0, \underline{1}1, \underline{1}2, \underline{1}3, \underline{1}4, \underline{1}5, \underline{1}6, \underline{1}7, \underline{1}8, \underline{1}9, 20, 21, \cdots , 98, 99}_{100}\]
+同理，百位上每1000个数字出现100个1 $\cdots$
+
+下面，我们举个例子说明一下怎么求1出现的次数。N=1231，先看个位，总共会循环123+1次，每个循环有1个1，再看十位，总共循环12+1次，每个循环有10个1，再看百位，总共循环1+1次，每个循环有100个1，最后是千位，总共循环0.232次，每个循环有1000个1.
+
+关键问题就是如何求循环次数，我们考虑第K位（个位是第0位），digit为当前位上的数字，higher为高位的数字，lower为低位的数字。digit和1的关系有三种：
+
+1. digit=0，循环次数为higher，出现次数为$higher*10^K$。
+
+2. digit=1，循环次数为higher，出现次数为$higher*10^K+lower+1$。
+
+3. digit>1，循环次数为higher+1，出现次数为$(higher+1)*10^K$。
+
+
+\begin{Code}
+// 时间复杂度O(log10(N))，空间复杂度O(1)
+int digitCounts(int n) {
+    int ans = 0;
+    int power = 1;
+    int higher = 0, lower = 0;
+    while (n != 0) {
+        int digit = n % 10;
+        higher = n / 10;
+        ans += (higher + (digit > 1 ? 1 : 0)) * power;
+        if (digit == 1) {
+            ans += lower + 1;
+        }
+        lower += power * digit;
+        power *= 10;
+        n /= 10;
+    }
+    return ans;
+}
+\end{Code}
+
+\subsubsection{问题2解法}
+无
+
+\subsubsection{扩展问题1}
+现在给你你一个数字$K, K \in [0, 1, 2, \cdots , 8, 9]$。求1到N中出现K的次数。题目来源 Lint Code Digit Count。
+
+\subsubsection{解法}
+和原问题基本一致，只不过要特殊考虑一下0，因为0不能作为数字开头。
+
+\subsubsection{扩展问题2}
+对于其他进制表示方法，也可以试试，看看什么规律。例如二进制：
+
+$f(1) = 1$
+
+$f(10) = 10$ （01，10两个1）
+
+$f(11) = 100$ （01， 10， 11四个1）
+
+
+\subsubsection{解法}
+和十进制的做法基本一致，为了方便计算我们采用十进制来表示数字，比如上面第三个式子我们用十进制表示为$f(3) = 4$，也就是输入输出都是十进制数，但是计算1的个数是采用二进制数。这里给出的代码采用的很多位运算。
+\begin{Code}
+// 时间复杂度O(lg(N))，空间复杂度O(1)
+int digitCountsBinary(int n) {
+    int ans = 0;
+    int wei = 0;
+    int higher = 0, lower = 0;
+    while (n != 0) {
+        int digit = n & 0x01;
+        higher = n >> 1;
+        if (digit == 0) {
+            ans += (higher << wei);
+        } else {
+        ans += ((higher << wei) | lower) + 1;
+        }
+        lower += (digit << wei);
+        wei++;
+        n >>= 1;
+    }
+    return ans;
+}
+\end{Code}

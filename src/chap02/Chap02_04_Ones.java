@@ -25,15 +25,15 @@ public class Chap02_04_Ones {
 
     public int digitCounts(int k, int n) {
         int ans = 0, product = 1, lower = 0;
-        while(n != 0){
+        while (n != 0) {
             int digit = n % 10;
             int higher = n / 10;
             int cnt = (digit > k) ? (higher + 1) : higher;
-            if(k == 0 && product > 1) {
+            if (k == 0 && product > 1) {
                 cnt--;
             }
             ans += cnt * product;
-            if(digit == k) {
+            if (digit == k) {
                 ans += lower + 1;
             }
             lower += digit * product;
@@ -43,8 +43,30 @@ public class Chap02_04_Ones {
         return ans;
     }
 
+    public int digitCountsBinary(int n) {
+        int ans = 0;
+        int wei = 0;
+        int higher = 0, lower = 0;
+        while (n != 0) {
+            int digit = n & 0x01;
+            higher = n >> 1;
+            if (digit == 0) {
+                ans += (higher << wei);
+            } else {
+                ans += ((higher << wei) | lower) + 1;
+            }
+            lower += (digit << wei);
+            wei++;
+            n >>= 1;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
-        int ans = new Chap02_04_Ones().digitCounts(0,1111111110);
+        for (int i = 0; i < 20; i++) {
+            System.out.println(new Chap02_04_Ones().digitCountsBinary(i));
+        }
+        int ans = new Chap02_04_Ones().digitCounts(11);
         System.out.println(ans);
     }
 }

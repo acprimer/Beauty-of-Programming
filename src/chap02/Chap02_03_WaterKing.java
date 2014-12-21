@@ -1,4 +1,5 @@
 package chap02;
+
 import java.util.Stack;
 /**
  * Created by yaodh on 2014/12/20.
@@ -41,6 +42,7 @@ public class Chap02_03_WaterKing {
         int[] count = new int[3];
         for(int i=0;i<ids.length;i++) {
         }
+        return 0;
     }
 
     public static void main(String[] args) {

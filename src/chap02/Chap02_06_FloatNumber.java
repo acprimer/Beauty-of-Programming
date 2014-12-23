@@ -41,7 +41,7 @@ public class Chap02_06_FloatNumber {
     }
 
     public static void main(String[] args) {
-        int[] ans = new Chap02_06_FloatNumber().floatNubmer("0.111(2)");
+        int[] ans = new Chap02_06_FloatNumber().floatNubmer("0.1(2)");
         System.out.printf(ans[0] + "/" + ans[1]);
     }
 }

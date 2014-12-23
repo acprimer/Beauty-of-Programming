@@ -19,3 +19,5 @@ Solutions to the book "Beauty of Programming".
 - [x] 2.2 不要被阶乘吓倒
 - [x] 2.3 寻找发帖“水王”
 - [x] 2.4 1的数目
+- [x] 2.5 寻找最大的K个数
+- [x] 2.6 精确表达浮点数

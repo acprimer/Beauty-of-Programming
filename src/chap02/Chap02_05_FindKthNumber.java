@@ -1,7 +1,6 @@
 package chap02;
 
 import java.util.PriorityQueue;
-import java.util.Scanner;
 
 /**
  * Created by yaodh on 2014/12/22.

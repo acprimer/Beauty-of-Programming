@@ -454,3 +454,72 @@ int gcd(int a, int b) {
     return gcd(b%a, a);
 }
 \end{Code}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{最大公约数问题} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:gcd}
+
+\subsubsection{问题}
+求两个正整数的最大公约数（GCD），如果两个正整数很大，有简单的算法吗？
+
+\subsubsection{解法1}
+
+根据欧几里德的辗转相除法可知$gcd(x, y) = gcd(y, x \% y)$。因此可以采用简单的递归来求解最大公约数。
+
+\begin{Code}
+// 时间复杂度O(lg(Max(x,y)))，空间复杂度O(1)
+int gcd(int x, int y) {
+	if(x==0) return y;
+	return gcd(y, x \% y);
+}
+// 非递归形式
+int gcd(int x, int y) {
+	while(y != 0) {
+		int r = x \% y;
+		m = n;
+		n = r;
+	}
+	return x;
+}
+\end{Code}
+
+\subsubsection{解法2}
+
+当正整数很大的时候，取模运算的开销很大，因此要避免使用取模运算。下面给出一种利用奇偶性来计算最大公约数的方法。
+\begin{enumerate}
+	\item 当x, y均为偶数时，$gcd(x,y) = 2 * gcd(\frac{x}{2}, \frac{y}{2})$。	
+	\item 当x, y均为奇数时，$gcd(x,y) = 2 * gcd(y, x-y)$。
+	\item 当x为偶数，y为奇数时，$gcd(x,y) = gcd(\frac{y}{2}, y)$。
+	\item 当x为奇数，y为偶数时，$gcd(x,y) = gcd(x, \frac{y}{2})$。
+\end{enumerate}
+
+\begin{Code}
+// 时间复杂度O(lg(Max(x,y)))，空间复杂度O(1)
+BigInteger gcd(BigInteger x, BigInteger y) {
+    if (x.compareTo(y) < 0) {
+        return gcd(y, x);
+    }
+    if (y.equals(BigInteger.ZERO)) {
+        return x;
+    }
+    if (isEven(x)) {
+        if (isEven(y)) { // x is even, y is even
+    	    return gcd(x.divide(BIG_TWO), y.divide(BIG_TWO)).multiply(BIG_TWO);
+        } else { // x is even, y is odd
+            return gcd(x.divide(BIG_TWO), y);	
+        }
+    } else {
+        if (isEven(y)) { // x is odd, y is even
+            return gcd(x, y.divide(BIG_TWO));
+        } else { // x is odd, y is odd
+            return gcd(y, x.subtract(y));
+        }
+    }
+}
+
+public boolean isEven(BigInteger x) {
+	return x.mod(BIG_TWO).equals(BigInteger.ZERO);
+}
+\end{Code}

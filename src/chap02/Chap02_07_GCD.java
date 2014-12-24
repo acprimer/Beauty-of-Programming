@@ -7,29 +7,39 @@ import java.math.BigInteger;
  */
 public class Chap02_07_GCD {
     public static final BigInteger BIG_TWO = BigInteger.valueOf(2);
+
     public int gcd(int x, int y) {
-        if(y==0) {
+        if (y == 0) {
             return x;
         }
-        return gcd(y, x%y);
+        return gcd(y, x % y);
+    }
+
+    public int gcd2(int x, int y) {
+        while(y != 0) {
+            int r = x % y;
+            x = y;
+            y = r;
+        }
+        return x;
     }
 
     public BigInteger gcd(BigInteger x, BigInteger y) {
-        if(x.compareTo(y) < 0) {
-            return gcd(y,x);
+        if (x.compareTo(y) < 0) {
+            return gcd(y, x);
         }
-        if(y.equals(BigInteger.ZERO)) {
+        if (y.equals(BigInteger.ZERO)) {
             return x;
         }
 
-        if(isEven(x)) {
-            if(isEven(y)) { // x is even, y is even
+        if (isEven(x)) {
+            if (isEven(y)) { // x is even, y is even
                 return gcd(x.divide(BIG_TWO), y.divide(BIG_TWO)).multiply(BIG_TWO);
             } else { // x is even, y is odd
                 return gcd(x.divide(BIG_TWO), y);
             }
         } else {
-            if(isEven(y)) { // x is odd, y is even
+            if (isEven(y)) { // x is odd, y is even
                 return gcd(x, y.divide(BIG_TWO));
             } else { // x is odd, y is odd
                 return gcd(y, x.subtract(y));

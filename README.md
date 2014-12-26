@@ -22,3 +22,5 @@ Solutions to the book "Beauty of Programming".
 - [x] 2.5 寻找最大的K个数
 - [x] 2.6 精确表达浮点数
 - [x] 2.7 最大公约数问题
+- [x] 2.8 找符合条件的整数
+- [x] 2.9 斐波纳契数列

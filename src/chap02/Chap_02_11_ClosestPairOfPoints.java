@@ -16,6 +16,7 @@ public class Chap_02_11_ClosestPairOfPoints {
         }
     }
 
+    Point2D[] aux;
     double minDist(Point2D[] points) {
         // sort by x
         Arrays.sort(points, new Comparator<Point2D>() {
@@ -29,20 +30,20 @@ public class Chap_02_11_ClosestPairOfPoints {
             pointsByY[i] = points[i];
         }
 
-        Point2D[] aux = new Point2D[points.length];
+        aux = new Point2D[points.length];
 
-        return cloest(points, pointsByY, aux, 0, points.length - 1);
+        return closest(points, pointsByY, 0, points.length - 1);
     }
 
-    private double cloest(Point2D[] pointsByX, Point2D[] pointsByY, Point2D[] aux, int start, int end) {
+    private double closest(Point2D[] pointsByX, Point2D[] pointsByY, int start, int end) {
         if (end <= start) {
             return Double.POSITIVE_INFINITY;
         }
 
         int mid = start + (end - start) / 2;
         int median = pointsByX[mid].x;
-        double dLeft = cloest(pointsByX, pointsByY, aux, start, mid);
-        double dRight = cloest(pointsByX, pointsByY, aux, mid + 1, end);
+        double dLeft = closest(pointsByX, pointsByY, start, mid);
+        double dRight = closest(pointsByX, pointsByY, mid + 1, end);
         double delta = Math.min(dLeft, dRight);
 
         merge(pointsByY, aux, start, mid, end);

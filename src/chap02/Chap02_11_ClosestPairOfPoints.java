@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * Created by yaodh on 2014/12/27.
  */
-public class Chap_02_11_ClosestPairOfPoints {
+public class Chap02_11_ClosestPairOfPoints {
     class Point2D {
         int x, y;
         public Point2D(int x, int y) {
@@ -16,7 +16,6 @@ public class Chap_02_11_ClosestPairOfPoints {
         }
     }
 
-    Point2D[] aux;
     double minDist(Point2D[] points) {
         // sort by x
         Arrays.sort(points, new Comparator<Point2D>() {
@@ -30,22 +29,23 @@ public class Chap_02_11_ClosestPairOfPoints {
             pointsByY[i] = points[i];
         }
 
-        aux = new Point2D[points.length];
+        Point2D[] aux = new Point2D[points.length];
 
-        return closest(points, pointsByY, 0, points.length - 1);
+        return closest(points, pointsByY, aux, 0, points.length - 1);
     }
 
-    private double closest(Point2D[] pointsByX, Point2D[] pointsByY, int start, int end) {
+    private double closest(Point2D[] pointsByX, Point2D[] pointsByY, Point2D[] aux, int start, int end) {
         if (end <= start) {
             return Double.POSITIVE_INFINITY;
         }
 
         int mid = start + (end - start) / 2;
         int median = pointsByX[mid].x;
-        double dLeft = closest(pointsByX, pointsByY, start, mid);
-        double dRight = closest(pointsByX, pointsByY, mid + 1, end);
+        double dLeft = closest(pointsByX, pointsByY, aux, start, mid);
+        double dRight = closest(pointsByX, pointsByY, aux, mid + 1, end);
         double delta = Math.min(dLeft, dRight);
 
+        // O(n)
         merge(pointsByY, aux, start, mid, end);
 
         int count = 0;
@@ -54,6 +54,7 @@ public class Chap_02_11_ClosestPairOfPoints {
                 aux[count++] = pointsByY[i];
             }
         }
+        // O(n)
         for (int i = 0; i < count; i++) {
             for (int j = i + 1; j < count && aux[j].y - aux[i].y < delta; j++) {
                 double distance = dist(aux[i], aux[j]);
@@ -90,8 +91,8 @@ public class Chap_02_11_ClosestPairOfPoints {
     }
 
     public static void main(String[] args) {
-        Point2D[] points = new Chap_02_11_ClosestPairOfPoints().generatePoints();
-        double ans = new Chap_02_11_ClosestPairOfPoints().minDist(points);
+        Point2D[] points = new Chap02_11_ClosestPairOfPoints().generatePoints();
+        double ans = new Chap02_11_ClosestPairOfPoints().minDist(points);
         System.out.println(ans);
     }
 }

@@ -582,7 +582,7 @@ int fib(int n) {
 }
 \end{Code}
 
-\subsubsection{解法2}
+\subsubsection{解法3}
 根据公式
 \[
 \left[
@@ -621,5 +621,235 @@ int[] multify(int[] x, int[] y) {
     ans[2] = x[2] * y[0] + x[3] * y[2];
     ans[3] = x[2] * y[1] + x[3] * y[3];
     return ans;
+\end{Code}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{寻找数组中的最大值和最小值} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:find-maxmin}
+
+\subsubsection{问题}
+在数组中找出最大值和最小值，最少需要比较多少次。
+
+\subsubsection{解法1}
+扫描一遍数组，将每个数都和最大值最小值比较，需要$2*N$次比较。代码略。
+
+\subsubsection{解法2}
+我们每次处理两个数，先比较这两个数，找出比较大的数和最大值比较，找出比较小的数和最小值比较，处理2个数要比较3次，总共需要比较$\frac{3}{2}N$次。
+\begin{Code}
+// 时间复杂度O(n)，空间复杂度O(1)
+int[] findMaxMin(int[] nums) {
+    int[] maxmin = new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE};
+    if (nums.length % 2 != 0) {
+        maxmin[0] = maxmin[1] = nums[0];
+    }
+    for (int i = nums.length % 2; i < nums.length; i += 2) {
+    int twoMax = nums[i];
+    int twoMin = nums[i + 1];
+    if (twoMax < twoMin) {
+        twoMax = nums[i + 1];
+        twoMin = nums[i];
+    }
+    maxmin[0] = Math.max(maxmin[0], twoMax);
+    maxmin[1] = Math.min(maxmin[1], twoMin);
+    }
+    return maxmin;
+}
+\end{Code}
+
+\subsubsection{扩展问题}
+如果需要找出数组中的次大元素，需要比较多少次？
+
+\subsubsection{解法}
+和找出最大最小值一样，同时记录最大值和次大值，每次处理两个元素，如果较大的数比最大值大，就更新最大值和次大值，再把较小的数和次大值比较。否则，就把较大的值和次大值比较。比较次数为$\frac{3}{2}N$
+\begin{Code}
+// 时间复杂度O(n)，空间复杂度O(1)
+int findSecondMax(int[] nums) {
+    int[] max = new int[]{Integer.MIN_VALUE, Integer.MIN_VALUE};
+    if (nums.length % 2 != 0) {
+        max[0] = max[1] = nums[0];
+    }
+    for (int i = nums.length % 2; i < nums.length; i += 2) {
+        int mmax = nums[i];
+        int smax = nums[i + 1];
+        if (mmax < smax) {
+            mmax = nums[i + 1];
+            smax = nums[i];
+        }
+        if (mmax > max[0]) {
+            max[1] = max[0];
+            max[0] = mmax;
+            if (smax > max[1]) {
+                max[1] = smax;
+            }
+        } else {
+            if (mmax > max[1]) {
+                max[1] = mmax;
+            }
+        }
+    }
+    return max[1];
+}
+\end{Code}
+
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{寻找最近点对} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:closest-pair-of-points}
+
+\subsubsection{问题}
+给定平面上N个点的坐标，找出距离最近的两个点。
+
+\subsubsection{解法}
+最直接的方法就是求出每两个点之间的距离，然后找出最小值，这种做法的时间复杂度是$O(n^2)$。我们可以采用分治的方法将时间复杂度降到$O(nlg(n))$。
+
+根据X坐标将这些点从小到大排序，然后分成左右两个部分$S_1$和$S_2$，分别求出它们的最小距离$\delta_1$和$\delta_2$，那么最小距离有三种情况：
+\begin{enumerate}
+	\item 最近点对都来自$S_1$，那么最小距离为$\delta_1$。
+	\item 最近点对都来自$S_2$，那么最小距离为$\delta_2$。
+	\item 最近点对分别来自$S_1$和$S_2$，这种情况需要特殊讨论。。
+\end{enumerate}
+下面我们来讨论第三种情况，
+\begin{center}
+	\includegraphics{fig2-11-1.png}\\
+	\figcaption{最近点对的三种情况}\label{fig:closest-pair-of-points-1}
+\end{center}
+如果其中一个点$p$来自$S_1$，另一个点来自$S_2$，那么最多只有6个点和$p$的距离小于$\delta = min(\delta_1, \delta_2)$。如下图所示：
+\begin{center}
+	\includegraphics{fig2-11-2.png}\\
+	\figcaption{最小距离的区域}\label{fig:closest-pair-of-points-2}
+\end{center}
+因此我们可以通过对$\delta$范围内的点按照Y坐标排序，这样就能在$O(n)$的时间内求出最小点对。根据时间复杂度$f(n)=2*f(\frac{n}{2})+O(n)$可以求出$f(n)=nlg(n)$。
+
+\begin{Code}
+// 时间复杂度O(nlgn)，空间复杂度O(n)
+// Point2D的定义
+class Point2D {
+    int x, y;
+    public Point2D(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+double minDist(Point2D[] points) {
+	// sort by x
+    Arrays.sort(points, new Comparator<Point2D>() {
+        @Override
+        public int compare(Point2D p, Point2D q) {
+            return p.x > q.x ? 1 : -1;
+        }
+    });
+    Point2D[] pointsByY = new Point2D[points.length];
+    for (int i = 0; i < points.length; i++) {
+        pointsByY[i] = points[i];
+    }
+	
+    Point2D[] aux = new Point2D[points.length];
+	
+    return closest(points, pointsByY, aux, 0, points.length - 1);
+}
+
+private double closest(Point2D[] pointsByX, Point2D[] pointsByY, Point2D[] aux, int start, int end) {
+    if (end <= start) {
+        return Double.POSITIVE_INFINITY;
+    }
+	
+    int mid = start + (end - start) / 2;
+    int median = pointsByX[mid].x;
+    double dLeft = closest(pointsByX, pointsByY, aux, start, mid);
+    double dRight = closest(pointsByX, pointsByY, aux, mid + 1, end);
+    double delta = Math.min(dLeft, dRight);
+	
+    // O(n)
+    merge(pointsByY, aux, start, mid, end);
+	
+    int count = 0;
+    for (int i = start; i <= end; i++) {
+        if (Math.abs(pointsByY[i].x - median) < delta) {
+            aux[count++] = pointsByY[i];
+        }
+    }
+    // O(n)
+    for (int i = 0; i < count; i++) {
+        for (int j = i + 1; j < count && aux[j].y - aux[i].y < delta; j++) {
+            double distance = dist(aux[i], aux[j]);
+            delta = Math.min(delta, distance);
+        }
+    }
+    return delta;
+}
+
+private double dist(Point2D p, Point2D q) {
+    double dx = p.x - q.x;
+    double dy = p.y - q.y;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+private void merge(Point2D[] pointsByY, Point2D[] aux, int start, int mid, int end) {
+    for (int i = start; i <= end; i++) {
+	    aux[i] = pointsByY[i];
+    }
+    int i = start, j = mid + 1, k = start;
+    while (i <= mid || j <= end) {
+        if (j > end || (i <= mid && aux[i].y < aux[j].y)) {
+            pointsByY[k++] = aux[i++];
+        } else {
+            pointsByY[k++] = aux[j++];
+        }
+    }
+}
+\end{Code}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{快速寻找满足条件的两个数} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:two-sum}
+
+\subsubsection{问题}
+快速找出一个数组中的两个数字，使得它们的和等于一个给定的值。
+
+\subsubsection{解法1}
+最简单的做法就是穷举：从数组中任意取出两个数字计算它们的和是否为给定的值，时间复杂度为$O(n^2)$。
+
+更快的查找方法是利用哈希表直接查找，将每个数字映射到哈希表中，然后对每个数字在哈希表中查找是否存在另一个数字。时间复杂度是$O(n)$。
+
+\begin{Code}
+// 时间复杂度O(n)，空间复杂度O(n)
+int[] twoSum(int[] numbers, int target) {
+    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+    for (int i = 0; i < numbers.length; i++) {
+        Integer other = map.get(target - numbers[i]);
+        if (other != null) {
+            return new int[]{other, i};
+        }
+        map.put(numbers[i], i);
+    }
+    return new int[]{-1, -1};
+}
+\end{Code}
+
+\subsubsection{解法2}
+如果对数组按照从小到大进行排序，那就可以利用二分查找来找出另一个数字是否在数组中，时间复杂度是$O(nlgn)$。另外，我们还可以采用两个指针的想法，让两个指针p,q分别指向数组首部和尾部。如果这两个数的和大于目标值就移动q--，
+如果大于目标值就移动p++。
+
+\begin{Code}
+// 这里假设数组是升序排列的
+// 时间复杂度O(n)，空间复杂度O(1)
+int[] twoSum_2(int[] numbers, int target) {
+    int i = 0, j = numbers.length - 1;
+    while (i < j) {
+        if (numbers[i] + numbers[j] > target) {
+            j--;
+        } else if (numbers[i] + numbers[j] < target) {
+            i++;
+        } else {
+            return new int[]{i, j};
+        }
+    }
+    return new int[]{-1, -1};
 }
 \end{Code}

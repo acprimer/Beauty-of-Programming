@@ -28,3 +28,4 @@ Solutions to the book "Beauty of Programming".
 - [x] 2.11 寻找最近点对
 - [x] 2.12 快速寻找满足条件的两个数
 - [x] 2.13 子数组的最大乘积
+- [x] 2.14 求数组的子数组之和的最大值

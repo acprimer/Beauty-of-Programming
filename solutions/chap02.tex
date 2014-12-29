@@ -853,3 +853,40 @@ int[] twoSum_2(int[] numbers, int target) {
     return new int[]{-1, -1};
 }
 \end{Code}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section{子数组的最大乘积} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:max-product}
+
+\subsubsection{问题}
+给定一个长度为N的整数数组，只允许使用乘法，不能用除法，计算任意N-1个数的组合中乘积最大的一组。
+
+\subsubsection{解法}
+使用两个乘积数组，$left[i]=\prod_{k=0}^{i-1}numbers[k]$，$right[i]=\prod_{k=n-1}^{i+1}numbers[k]$，则$ans = max_{i=0}^{n-1}(left[i]*right[i])$。算法的时间复杂度是O(n)。
+
+\begin{Code}
+// 时间复杂度O(n)，空间复杂度O(n)
+int maxProduct(int[] numbers) {
+    int len = numbers.length;
+    if (len <= 1) {
+        return 0;
+    }
+    int ans = 0;
+    int[] leftProduct = new int[len];
+    int[] rightProduct = new int[len];
+    leftProduct[0] = 1;
+    rightProduct[len - 1] = 1;
+    for (int i = 1; i < numbers.length; i++) {
+        leftProduct[i] = leftProduct[i - 1] * numbers[i - 1];
+    }
+    for (int i = len - 2; i >= 0; i--) {
+        rightProduct[i] = rightProduct[i + 1] * numbers[i + 1];
+    }
+    for (int i = 0; i < numbers.length; i++) {
+        ans = Math.max(ans, leftProduct[i] * rightProduct[i]);
+    }
+    return ans;
+}
+\end{Code}

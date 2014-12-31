@@ -5,20 +5,18 @@ package chap02;
  */
 public class Chap02_17_ArrayCyclicShift {
     void cyclicShift(int[] numbers, int k) {
-        if (k == 0 || k == numbers.length) {
-            return;
-        }
         int n = numbers.length;
-        for (int i = n - k; i < n; i++) {
-            int idx = i - (n - k);
-            int last = numbers[i];
-            numbers[i] = numbers[i-k];
-            while (idx < n) {
-                int tmp = numbers[idx];
-                numbers[idx] = last;
-                last = tmp;
-                idx += k;
-            }
+        k %= n;
+        reverse(numbers, 0, n - 1);
+        reverse(numbers, 0, n - k - 1);
+        reverse(numbers, n - k, n - 1);
+    }
+
+    private void reverse(int[] numbers, int start, int end) {
+        for (int i = start, j = end; i < j; i++, j--) {
+            int tmp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = tmp;
         }
     }
 

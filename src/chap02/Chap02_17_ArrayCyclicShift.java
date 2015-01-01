@@ -13,10 +13,10 @@ public class Chap02_17_ArrayCyclicShift {
     }
 
     private void reverse(int[] numbers, int start, int end) {
-        for (int i = start, j = end; i < j; i++, j--) {
-            int tmp = numbers[i];
-            numbers[i] = numbers[j];
-            numbers[j] = tmp;
+        for (; start < end; start++, end--) {
+            int tmp = numbers[start];
+            numbers[start] = numbers[end];
+            numbers[end] = tmp;
         }
     }
 

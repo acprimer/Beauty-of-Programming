@@ -6,7 +6,8 @@ package chap02;
 public class Chap02_20_TimeAnalys {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        int[] rg = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
+        int[] rg = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
         for (long i = 1; i < Long.MAX_VALUE; i++) {
             int hit = 0;
             int hit1 = -1;

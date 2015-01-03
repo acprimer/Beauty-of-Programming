@@ -57,9 +57,9 @@ public class Chap02_21_Add {
     }
 
     public static void main(String[] args) {
-//        long number = (long) 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23 * 29 * 31 * 37 * 41 * 47 * 25 * 27;
-        long number = 987654323;
-        System.out.println(Long.MAX_VALUE / number);
+        long number = (long) 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23 * 29 * 31 * 37 * 41 * 47 * 25 * 27;
+//        long number = 987654323;
+//        System.out.println(Long.MAX_VALUE / number);
         System.out.println(number + ": " + new Chap02_21_Add().sumCount_2(number));
     }
 }

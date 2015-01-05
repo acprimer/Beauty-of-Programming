@@ -38,3 +38,5 @@ Solutions to the book "Beauty of Programming".
 
 ###Chap 03 结构之法——字符串及链表的探索
 - [x] 3.1 字符串移位包含的问题
+- [x] 3.2 电话号码对应英文单词
+- [x] 3.3 计算字符串的相似度

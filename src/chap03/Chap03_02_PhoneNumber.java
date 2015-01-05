@@ -47,7 +47,7 @@ public class Chap03_02_PhoneNumber {
     }
 
     public static void main(String[] args) {
-        List<String> ans = new Chap03_02_PhoneNumber().findWords_2("45");
+        List<String> ans = new Chap03_02_PhoneNumber().findWords_2("456");
         for (String word : ans) {
             System.out.println(word);
         }

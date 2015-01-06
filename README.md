@@ -40,3 +40,4 @@ Solutions to the book "Beauty of Programming".
 - [x] 3.1 字符串移位包含的问题
 - [x] 3.2 电话号码对应英文单词
 - [x] 3.3 计算字符串的相似度
+- [x] 3.4 从无头单链表中删除节点

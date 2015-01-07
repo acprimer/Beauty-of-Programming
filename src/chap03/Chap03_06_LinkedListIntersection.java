@@ -27,6 +27,19 @@ public class Chap03_06_LinkedListIntersection {
         return lastA == lastB;
     }
 
+    boolean isIntersection_2(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return false;
+        }
+        while (headA.next != null) {
+            headA = headA.next;
+        }
+        while (headB.next != null) {
+            headB = headB.next;
+        }
+        return headA == headB;
+    }
+
     ListNode findIntersection(ListNode headA, ListNode headB) {
         int lenA = lengthOfLinkedList(headA);
         int lenB = lengthOfLinkedList(headB);
@@ -70,7 +83,7 @@ public class Chap03_06_LinkedListIntersection {
         ListNode L1 = new Chap03_06_LinkedListIntersection().generate(new int[]{1, 2, 3});
         ListNode L2 = new Chap03_06_LinkedListIntersection().generate(new int[]{9, 4, 5});
         L1.next.next = L2.next;
-        boolean ans = new Chap03_06_LinkedListIntersection().isIntersection(L1, L2);
+        boolean ans = new Chap03_06_LinkedListIntersection().isIntersection_2(L1, L2);
         System.out.println(ans);
         ListNode inter = new Chap03_06_LinkedListIntersection().findIntersection(L1, L2);
         System.out.println(inter.data);

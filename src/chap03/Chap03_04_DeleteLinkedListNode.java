@@ -4,16 +4,16 @@ package chap03;
  * Created by yaodh on 2015/1/6.
  */
 public class Chap03_04_DeleteLinkedListNode {
-    class Node {
+    class ListNode {
         int data;
-        Node next;
+        ListNode next;
 
-        Node(int x) {
+        ListNode(int x) {
             data = x;
         }
     }
 
-    void deleteNode(Node p) {
+    void deleteNode(ListNode p) {
         if (p.next == null) {
             return;
         }
@@ -22,8 +22,8 @@ public class Chap03_04_DeleteLinkedListNode {
     }
 
     public static void main(String[] args) {
-        Node head = new Chap03_04_DeleteLinkedListNode().generate(new int[]{1, 2, 3, 4});
-        Node p = head.next.next;
+        ListNode head = new Chap03_04_DeleteLinkedListNode().generate(new int[]{1, 2, 3, 4});
+        ListNode p = head.next.next;
         new Chap03_04_DeleteLinkedListNode().deleteNode(p);
         while (head != null) {
             System.out.println(head.data);
@@ -31,11 +31,11 @@ public class Chap03_04_DeleteLinkedListNode {
         }
     }
 
-    private Node generate(int[] numbers) {
-        Node head = new Node(numbers[0]);
-        Node p = head;
+    private ListNode generate(int[] numbers) {
+        ListNode head = new ListNode(numbers[0]);
+        ListNode p = head;
         for (int i = 1; i < numbers.length; i++) {
-            Node node = new Node(numbers[i]);
+            ListNode node = new ListNode(numbers[i]);
             p = p.next = node;
         }
         return head;

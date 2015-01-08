@@ -18,8 +18,10 @@ public class Chap03_03_StringSimilarity {
         }
         for (int i = 1; i < sLen; i++) {
             for (int j = 1; j < tLen; j++) {
-                dist[i][j] = dist[i - 1][j - 1] + (s.charAt(i) == t.charAt(j) ? 0 : 1);
-                dist[i][j] = Math.min(dist[i][j], Math.min(dist[i - 1][j], dist[i][j - 1]) + 1);
+                dist[i][j] = dist[i - 1][j - 1]
+                        + (s.charAt(i) == t.charAt(j) ? 0 : 1);
+                dist[i][j] = Math.min(dist[i][j],
+                        Math.min(dist[i - 1][j], dist[i][j - 1]) + 1);
             }
         }
         return dist[sLen - 1][tLen - 1];
@@ -38,8 +40,10 @@ public class Chap03_03_StringSimilarity {
         dist[1][0] = 1;
         for (int i = 1; i < sLen; i++) {
             for (int j = 1; j < tLen; j++) {
-                dist[i % 2][j] = dist[(i + 1) % 2][j - 1] + (s.charAt(i) == t.charAt(j) ? 0 : 1);
-                dist[i % 2][j] = Math.min(dist[i % 2][j], Math.min(dist[(i + 1) % 2][j], dist[i % 2][j - 1]) + 1);
+                dist[i % 2][j] = dist[(i + 1) % 2][j - 1]
+                        + (s.charAt(i) == t.charAt(j) ? 0 : 1);
+                dist[i % 2][j] = Math.min(dist[i % 2][j],
+                        Math.min(dist[(i + 1) % 2][j], dist[i % 2][j - 1]) + 1);
             }
         }
         return dist[(sLen + 1) % 2][tLen - 1];

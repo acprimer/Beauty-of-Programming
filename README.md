@@ -43,3 +43,4 @@ Solutions to the book "Beauty of Programming".
 - [x] 3.4 从无头单链表中删除节点
 - [x] 3.6 编程判断两个链表是否相交
 - [x] 3.7 队列中取最大值操作问题
+- [x] 3.8 求二叉树中节点的最大距离

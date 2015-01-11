@@ -47,9 +47,6 @@ public class Chap03_11_DebugCode {
         if (A[right] == target) {
             return right;
         }
-        if (A[left] == target) {
-            return left;
-        }
         return -1;
     }
 
@@ -70,9 +67,6 @@ public class Chap03_11_DebugCode {
                 right = mid;
             }
         }
-        if (A[right] == target) {
-            return right;
-        }
         if (A[left] == target) {
             return left;
         }
@@ -80,7 +74,7 @@ public class Chap03_11_DebugCode {
     }
 
     public static void main(String[] args) {
-        int[] A = new int[]{0, 1, 2, 3, 4, 4, 4, 4, 4, 5, 6, 7, 8, 9};
+        int[] A = new int[]{};
         System.out.println(new Chap03_11_DebugCode().bsearch2(A, 4));
         System.out.println(new Chap03_11_DebugCode().bsearch3(A, 4));
     }

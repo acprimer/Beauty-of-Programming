@@ -1,9 +1,6 @@
 package chap02;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Created by yaodh on 2015/1/1.
@@ -69,9 +66,93 @@ public class Chap02_19_IntervalsOverlapping {
     }
 
     public static void main(String[] args) {
-        Interval[] intervals = new Chap02_19_IntervalsOverlapping().generateArray();
-        Interval source = new Chap02_19_IntervalsOverlapping().new Interval(1,6);
-        boolean ans = new Chap02_19_IntervalsOverlapping().isIntervalsOverlapping(intervals, source);
+//        Interval[] intervals = new Chap02_19_IntervalsOverlapping().generateArray();
+//        Interval source = new Chap02_19_IntervalsOverlapping().new Interval(1,6);
+//        boolean ans = new Chap02_19_IntervalsOverlapping().isIntervalsOverlapping(intervals, source);
+//        System.out.println(ans);
+
+        Chap02_19_IntervalsOverlapping solution = new Chap02_19_IntervalsOverlapping();
+        Rectangle[] rects = solution.generateRectangle();
+        Rectangle target = solution.new Rectangle(1, 1, 3, 3);
+        boolean ans = new Chap02_19_IntervalsOverlapping().isRectangleOverlapping(rects, target);
         System.out.println(ans);
+    }
+
+    public Rectangle[] generateRectangle() {
+        Rectangle[] rects = new Rectangle[2];
+        rects[0] = new Rectangle(0, 1, 2, 3);
+        rects[1] = new Rectangle(1, 0, 3, 2);
+        return rects;
+    }
+
+    // 矩形覆盖
+    class Rectangle {
+        int x1, y1, x2, y2;
+
+        Rectangle(int x1, int y1, int x2, int y2) {
+            this.x1 = x1;
+            this.y1 = y1;
+            this.x2 = x2;
+            this.y2 = y2;
+        }
+    }
+
+    boolean isRectangleIntersect(Rectangle R, Rectangle S) {
+        return R.x1 <= S.x2 && R.x2 >= S.x1 && R.y1 <= S.y2 && R.y2 >= S.y1;
+    }
+
+    private List<Integer> xCoordinate;
+    private List<Integer> yCoordinate;
+
+    boolean isRectangleOverlapping(Rectangle[] rects, Rectangle target) {
+        int n = rects.length;
+        xCoordinate = new ArrayList<Integer>(2 * (n + 1));
+        yCoordinate = new ArrayList<Integer>(2 * (n + 1));
+        boolean[][] flag = new boolean[2 * n][2 * n];
+
+        for (int i = 0; i < n; i++) {
+            addToList(rects[i]);
+        }
+        addToList(target);
+
+        Collections.sort(xCoordinate);
+        Collections.sort(yCoordinate);
+
+        for (int k = 0; k <= n; k++) {
+            Rectangle rect = target;
+            if (k < n) {
+                rect = rects[k];
+            }
+            for (int i = 0; i < xCoordinate.size() && xCoordinate.get(i) < rect.x2; i++) {
+                if (xCoordinate.get(i) < rect.x1) {
+                    continue;
+                }
+                for (int j = 0; j < yCoordinate.size() && yCoordinate.get(j) < rect.y2; j++) {
+                    if (yCoordinate.get(j) < rect.y1) {
+                        continue;
+                    }
+                    if (k == n && !flag[i][j]) {
+                        return false;
+                    }
+                    flag[i][j] = true;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void addToList(Rectangle rect) {
+        if (!xCoordinate.contains(rect.x1)) {
+            xCoordinate.add(rect.x1);
+        }
+        if (!xCoordinate.contains(rect.x2)) {
+            xCoordinate.add(rect.x2);
+        }
+        if (!yCoordinate.contains(rect.y1)) {
+            yCoordinate.add(rect.y1);
+        }
+        if (!yCoordinate.contains(rect.y2)) {
+            yCoordinate.add(rect.y2);
+        }
     }
 }

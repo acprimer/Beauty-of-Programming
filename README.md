@@ -47,3 +47,6 @@ Solutions to the book "Beauty of Programming".
 - [x] 3.8 求二叉树中节点的最大距离
 - [x] 3.9 重建二叉树
 - [x] 3.10 分层遍历二叉树
+
+###Chap 04 数学之魅——数学游戏的乐趣
+- [x] 4.3 买票找零

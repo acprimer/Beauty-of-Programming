@@ -6,8 +6,6 @@ import java.math.BigInteger;
  * Created by yaodh on 2014/12/24.
  */
 public class Chap02_07_GCD {
-    public static final BigInteger BIG_TWO = BigInteger.valueOf(2);
-
     public int gcd(int x, int y) {
         if (y == 0) {
             return x;
@@ -34,13 +32,13 @@ public class Chap02_07_GCD {
 
         if (isEven(x)) {
             if (isEven(y)) { // x is even, y is even
-                return gcd(x.divide(BIG_TWO), y.divide(BIG_TWO)).multiply(BIG_TWO);
+                return gcd(x.shiftRight(1), y.shiftRight(1)).shiftLeft(1);
             } else { // x is even, y is odd
-                return gcd(x.divide(BIG_TWO), y);
+                return gcd(x.shiftRight(1), y);
             }
         } else {
             if (isEven(y)) { // x is odd, y is even
-                return gcd(x, y.divide(BIG_TWO));
+                return gcd(x, y.shiftRight(1));
             } else { // x is odd, y is odd
                 return gcd(y, x.subtract(y));
             }
@@ -48,11 +46,11 @@ public class Chap02_07_GCD {
     }
 
     public boolean isEven(BigInteger x) {
-        return x.mod(BIG_TWO).equals(BigInteger.ZERO);
+        return !x.testBit(0);
     }
 
     public static void main(String[] args) {
-        BigInteger ans = new Chap02_07_GCD().gcd(BigInteger.valueOf(1100100210001L), BigInteger.valueOf(120200021));
+        BigInteger ans = new Chap02_07_GCD().gcd(BigInteger.valueOf(120), BigInteger.valueOf(42));
         System.out.println(ans);
     }
 }

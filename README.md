@@ -49,5 +49,7 @@ Solutions to the book "Beauty of Programming".
 - [x] 3.10 分层遍历二叉树
 
 ###Chap 04 数学之魅——数学游戏的乐趣
+- [x] 4.2 瓷砖覆盖地板
 - [x] 4.3 买票找零
 - [x] 4.4 点是否在三角形内
+- [x] 4.5 磁带文件存放优化

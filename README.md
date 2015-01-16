@@ -53,3 +53,4 @@ Solutions to the book "Beauty of Programming".
 - [x] 4.3 买票找零
 - [x] 4.4 点是否在三角形内
 - [x] 4.5 磁带文件存放优化
+- [x] 4.6 桶中取黑白球

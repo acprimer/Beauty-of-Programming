@@ -55,3 +55,4 @@ Solutions to the book "Beauty of Programming".
 - [x] 4.5 磁带文件存放优化
 - [x] 4.6 桶中取黑白球
 - [x] 4.7 蚂蚁爬杆
+- [x] 4.8 三角形测试用例

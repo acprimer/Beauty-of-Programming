@@ -3,18 +3,18 @@ Beauty-of-Programming
 
 Solutions to the book "Beauty of Programming".
 
-##PDF下载
+## PDF下载
 <a href="https://github.com/acprimer/Beauty-of-Programming/blob/master/solutions/solutions.pdf">编程之美解题报告Java版.pdf</a>
 
-##LaTeX模板
+## LaTeX模板
 本书使用的是陈硕开源的[模板](https://github.com/chenshuo/typeset)。
 
-##完成进度
+## 完成进度
 
-###Chap 01 游戏之乐
+### Chap 01 游戏之乐
 未完成
 
-###Chap 02 数字之魅——数字中的技巧
+### Chap 02 数字之魅——数字中的技巧
 - [x] 2.1 求二进制数中1的个数
 - [x] 2.2 不要被阶乘吓倒
 - [x] 2.3 寻找发帖“水王”
@@ -36,7 +36,7 @@ Solutions to the book "Beauty of Programming".
 - [x] 2.20 程序理解和时间分析
 - [x] 2.21 只考加法的面试题
 
-###Chap 03 结构之法——字符串及链表的探索
+### Chap 03 结构之法——字符串及链表的探索
 - [x] 3.1 字符串移位包含的问题
 - [x] 3.2 电话号码对应英文单词
 - [x] 3.3 计算字符串的相似度
@@ -48,7 +48,7 @@ Solutions to the book "Beauty of Programming".
 - [x] 3.9 重建二叉树
 - [x] 3.10 分层遍历二叉树
 
-###Chap 04 数学之魅——数学游戏的乐趣
+### Chap 04 数学之魅——数学游戏的乐趣
 - [x] 4.2 瓷砖覆盖地板
 - [x] 4.3 买票找零
 - [x] 4.4 点是否在三角形内

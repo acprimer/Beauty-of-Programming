@@ -57,7 +57,7 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 %\setmainfont{TeX Gyre Pagella}
 \newfontfamily\urlfont{PT Sans Narrow}
 %\setmonofont[AutoFakeBold=1.6,AutoFakeSlant=0.17,Mapping=tex-text-tt]{Inconsolata}
-\setCJKfamilyfont{zhyou}{YouYuan}
+\setCJKfamilyfont{zhyou}{STSong}
 
 \newcommand{\fn}[1]{\texttt{#1}}
 \newcommand{\sfn}[1]{\texttt{\small #1}}

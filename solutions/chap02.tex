@@ -720,12 +720,12 @@ return max[1];
 \end{enumerate}
 下面我们来讨论第三种情况，
 \begin{center}
-	\includegraphics{fig2-11-1.png}\\
+	\includegraphics{fig2-1-1.png}\\
 	\figcaption{最近点对的三种情况}\label{fig:closest-pair-of-points-1}
 \end{center}
 如果其中一个点$p$来自$S_1$，另一个点来自$S_2$，那么最多只有6个点和$p$的距离小于$\delta = min(\delta_1, \delta_2)$。如下图所示：
 \begin{center}
-	\includegraphics{fig2-11-2.png}\\
+	\includegraphics{fig2-1-1.png}\\
 	\figcaption{最小距离的区域}\label{fig:closest-pair-of-points-2}
 \end{center}
 因此我们可以通过对$\delta$范围内的点按照Y坐标排序，这样就能在$O(n)$的时间内求出最小点对。根据时间复杂度$f(n)=2*f(\frac{n}{2})+O(n)$可以求出$f(n)=nlg(n)$。

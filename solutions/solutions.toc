@@ -1,0 +1,137 @@
+\contentsline {subsubsection}{内容简介}{i}{section*.1}
+\contentsline {subsubsection}{数学符号}{i}{section*.2}
+\contentsline {subsubsection}{GitHub地址}{i}{section*.3}
+\contentsline {chapter}{\numberline {第1章\hspace {0.3em}}游戏之乐}{1}{chapter.1}
+\contentsline {chapter}{\numberline {第2章\hspace {0.3em}}数学之魅}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}求二进制数中1的个数}{2}{section.2.1}
+\contentsline {subsubsection}{问题}{2}{section*.5}
+\contentsline {subsubsection}{解法一}{2}{section*.6}
+\contentsline {subsubsection}{解法二}{2}{section*.7}
+\contentsline {subsubsection}{解法三}{3}{section*.8}
+\contentsline {subsubsection}{扩展问题1}{3}{section*.9}
+\contentsline {subsubsection}{解法}{3}{section*.10}
+\contentsline {subsubsection}{扩展问题2}{3}{section*.11}
+\contentsline {subsubsection}{解法}{3}{section*.12}
+\contentsline {subsubsection}{扩展问题3}{4}{section*.13}
+\contentsline {subsubsection}{解法}{4}{section*.14}
+\contentsline {section}{\numberline {2.2}不要被阶乘吓倒}{4}{section.2.2}
+\contentsline {subsubsection}{问题}{4}{section*.15}
+\contentsline {subsubsection}{问题1解法}{4}{section*.16}
+\contentsline {subsubsection}{问题2解法一}{5}{section*.17}
+\contentsline {subsubsection}{问题2解法二}{5}{section*.18}
+\contentsline {subsubsection}{扩展问题}{5}{section*.19}
+\contentsline {subsubsection}{解法}{5}{section*.20}
+\contentsline {section}{\numberline {2.3}寻找发帖“水王”}{6}{section.2.3}
+\contentsline {subsubsection}{问题}{6}{section*.21}
+\contentsline {subsubsection}{解法1}{6}{section*.22}
+\contentsline {subsubsection}{解法2}{7}{section*.23}
+\contentsline {subsubsection}{解法3}{7}{section*.24}
+\contentsline {subsubsection}{扩展问题1}{7}{section*.25}
+\contentsline {subsubsection}{解法}{7}{section*.26}
+\contentsline {subsubsection}{扩展问题2}{7}{section*.27}
+\contentsline {subsubsection}{解法}{8}{section*.28}
+\contentsline {section}{\numberline {2.4}1的数目}{9}{section.2.4}
+\contentsline {subsubsection}{问题}{9}{section*.29}
+\contentsline {subsubsection}{问题1解法}{9}{section*.30}
+\contentsline {subsubsection}{问题2解法}{10}{section*.31}
+\contentsline {subsubsection}{扩展问题1}{10}{section*.32}
+\contentsline {subsubsection}{解法}{10}{section*.33}
+\contentsline {subsubsection}{扩展问题2}{10}{section*.34}
+\contentsline {subsubsection}{解法}{11}{section*.35}
+\contentsline {section}{\numberline {2.5}寻找最大的K个数}{11}{section.2.5}
+\contentsline {subsubsection}{问题}{11}{section*.36}
+\contentsline {subsubsection}{解法}{11}{section*.37}
+\contentsline {section}{\numberline {2.6}精确表达浮点数}{12}{section.2.6}
+\contentsline {subsubsection}{问题}{12}{section*.38}
+\contentsline {subsubsection}{解法}{12}{section*.39}
+\contentsline {section}{\numberline {2.7}最大公约数问题}{13}{section.2.7}
+\contentsline {subsubsection}{问题}{13}{section*.40}
+\contentsline {subsubsection}{解法1}{14}{section*.41}
+\contentsline {subsubsection}{解法2}{14}{section*.42}
+\contentsline {section}{\numberline {2.8}找符合条件的整数}{15}{section.2.8}
+\contentsline {subsubsection}{问题}{15}{section*.43}
+\contentsline {section}{\numberline {2.9}斐波纳契数列}{15}{section.2.9}
+\contentsline {subsubsection}{问题}{15}{section*.44}
+\contentsline {subsubsection}{解法1}{15}{section*.45}
+\contentsline {subsubsection}{解法2}{16}{section*.46}
+\contentsline {subsubsection}{解法3}{16}{section*.47}
+\contentsline {section}{\numberline {2.10}寻找数组中的最大值和最小值}{17}{section.2.10}
+\contentsline {subsubsection}{问题}{17}{section*.48}
+\contentsline {subsubsection}{解法1}{17}{section*.49}
+\contentsline {subsubsection}{解法2}{17}{section*.50}
+\contentsline {subsubsection}{扩展问题}{17}{section*.51}
+\contentsline {subsubsection}{解法}{17}{section*.52}
+\contentsline {section}{\numberline {2.11}寻找最近点对}{18}{section.2.11}
+\contentsline {subsubsection}{问题}{18}{section*.53}
+\contentsline {subsubsection}{解法}{18}{section*.54}
+\contentsline {section}{\numberline {2.12}快速寻找满足条件的两个数}{21}{section.2.12}
+\contentsline {subsubsection}{问题}{21}{section*.55}
+\contentsline {subsubsection}{解法1}{21}{section*.56}
+\contentsline {subsubsection}{解法2}{21}{section*.57}
+\contentsline {section}{\numberline {2.13}子数组的最大乘积}{22}{section.2.13}
+\contentsline {subsubsection}{问题}{22}{section*.58}
+\contentsline {subsubsection}{解法}{22}{section*.59}
+\contentsline {section}{\numberline {2.14}求数组的子数组之和的最大值}{22}{section.2.14}
+\contentsline {subsubsection}{问题}{22}{section*.60}
+\contentsline {subsubsection}{解法}{23}{section*.61}
+\contentsline {section}{\numberline {2.15}子数组之和的最大值（二维）}{23}{section.2.15}
+\contentsline {subsubsection}{问题}{23}{section*.62}
+\contentsline {subsubsection}{解法}{23}{section*.63}
+\contentsline {section}{\numberline {2.16}求数组中最长递增子序列}{24}{section.2.16}
+\contentsline {subsubsection}{问题}{24}{section*.64}
+\contentsline {subsubsection}{解法1}{24}{section*.65}
+\contentsline {section}{\numberline {2.17}数组循环移位}{25}{section.2.17}
+\contentsline {subsubsection}{问题}{25}{section*.66}
+\contentsline {subsubsection}{解法}{25}{section*.67}
+\contentsline {section}{\numberline {2.18}数组分割}{25}{section.2.18}
+\contentsline {subsubsection}{问题}{25}{section*.68}
+\contentsline {subsubsection}{解法}{26}{section*.69}
+\contentsline {section}{\numberline {2.19}区间重合判断}{26}{section.2.19}
+\contentsline {subsubsection}{问题}{26}{section*.70}
+\contentsline {subsubsection}{解法}{26}{section*.71}
+\contentsline {subsubsection}{扩展问题1}{27}{section*.72}
+\contentsline {subsubsection}{解答}{27}{section*.73}
+\contentsline {subsubsection}{扩展问题2}{28}{section*.74}
+\contentsline {subsubsection}{解答}{28}{section*.75}
+\contentsline {section}{\numberline {2.20}程序理解和时间分析}{30}{section.2.20}
+\contentsline {subsubsection}{问题}{30}{section*.76}
+\contentsline {subsubsection}{解法}{30}{section*.77}
+\contentsline {section}{\numberline {2.21}只考加法的面试题}{31}{section.2.21}
+\contentsline {subsubsection}{问题}{31}{section*.78}
+\contentsline {subsubsection}{解法}{31}{section*.79}
+\contentsline {chapter}{\numberline {第3章\hspace {0.3em}}结构之法}{32}{chapter.3}
+\contentsline {section}{\numberline {3.1}字符串移位包含的问题}{32}{section.3.1}
+\contentsline {subsubsection}{问题}{32}{section*.80}
+\contentsline {subsubsection}{解法一}{33}{section*.81}
+\contentsline {subsubsection}{解法二}{33}{section*.82}
+\contentsline {section}{\numberline {3.2}电话号码对应英文单词}{34}{section.3.2}
+\contentsline {subsubsection}{问题}{34}{section*.83}
+\contentsline {subsubsection}{解法一}{34}{section*.84}
+\contentsline {subsubsection}{解法二}{35}{section*.85}
+\contentsline {section}{\numberline {3.3}计算字符串的相似度}{35}{section.3.3}
+\contentsline {subsubsection}{问题}{35}{section*.86}
+\contentsline {subsubsection}{解法一}{35}{section*.87}
+\contentsline {subsubsection}{解法二}{36}{section*.88}
+\contentsline {section}{\numberline {3.4}从无头单链表中删除节点}{36}{section.3.4}
+\contentsline {subsubsection}{问题}{36}{section*.89}
+\contentsline {subsubsection}{解法}{37}{section*.90}
+\contentsline {section}{\numberline {3.5}编程判断两个链表是否相交}{37}{section.3.5}
+\contentsline {subsubsection}{问题}{37}{section*.91}
+\contentsline {subsubsection}{解法}{37}{section*.92}
+\contentsline {subsubsection}{扩展问题}{37}{section*.93}
+\contentsline {subsubsection}{解法}{37}{section*.94}
+\contentsline {section}{\numberline {3.6}队列中取最大值操作问题}{38}{section.3.6}
+\contentsline {subsubsection}{问题}{38}{section*.95}
+\contentsline {subsubsection}{解法}{39}{section*.96}
+\contentsline {section}{\numberline {3.7}求二叉树中节点的最大距离}{39}{section.3.7}
+\contentsline {subsubsection}{问题}{39}{section*.97}
+\contentsline {subsubsection}{解法}{39}{section*.98}
+\contentsline {section}{\numberline {3.8}重建二叉树}{40}{section.3.8}
+\contentsline {subsubsection}{问题}{40}{section*.99}
+\contentsline {subsubsection}{解法}{40}{section*.100}
+\contentsline {section}{\numberline {3.9}分层遍历二叉树}{41}{section.3.9}
+\contentsline {subsubsection}{问题}{41}{section*.101}
+\contentsline {subsubsection}{解法}{42}{section*.102}
+\contentsline {section}{\numberline {3.10}程序改错}{42}{section.3.10}
+\contentsline {subsubsection}{问题}{42}{section*.103}
+\contentsline {subsubsection}{解法}{42}{section*.104}
